@@ -22,10 +22,10 @@ def main():
     window.setMaximumSize(1080,720)
     # Thiết lập tiêu đề, icon cho cửa sổ
     window.setWindowTitle("My App")
-    window.setWindowIcon(QIcon('Icons/game.ico'))
+    window.setWindowIcon(QIcon('Icons/LeagueOfLegends.ico'))
 
     # Set background color using stylesheets
-    window.setStyleSheet("background-color: #D9D9D9;")
+    window.setStyleSheet("background-color: #FFFFFF;")
     
 
     initComponents(window)
