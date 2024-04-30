@@ -21,7 +21,7 @@ def main():
     window.setMaximumSize(1080,720)
     # Thiết lập tiêu đề, icon cho cửa sổ
     window.setWindowTitle("My App")
-    window.setWindowIcon(QIcon('Icons/icon_avata.jpg'))
+    window.setWindowIcon(QIcon('Icons/game.ico'))
 
     # Set background color using stylesheets
     window.setStyleSheet("background-color: #D9D9D9;")
@@ -38,8 +38,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# ngày mai đi cafe hay đi bơi?
-
-# đây là ví dụ của thành
-
