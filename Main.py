@@ -1,4 +1,3 @@
-
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtGui import QIcon
 from GUI import MenuGUI
@@ -39,3 +38,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# have change here
