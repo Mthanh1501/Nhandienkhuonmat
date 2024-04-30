@@ -17,7 +17,7 @@ class PositionAddGUI(QWidget):
 
     def initUI(self):
         # Create a login panel widget
-        self.setFixedSize(634, 720)
+        self.setFixedSize(350, 270)
 
         PositionAddPanel = QWidget(self)  # Specify parent widget
         PositionAddPanel.setStyleSheet("background-color: #B8B8B8;")
@@ -41,18 +41,18 @@ class PositionAddGUI(QWidget):
         # tên chức vụ
         tenCVLabel = QLabel("Tên chức vụ", PositionAddPanel)
         tenCVLabel.setStyleSheet("font-size: 16pt;")
-        tenCVLabel.setGeometry(26, 130, 291, 30)
+        tenCVLabel.setGeometry(26, 31, 291, 30)
 
         self.tenCVInput = QLineEdit(PositionAddPanel)
         self.tenCVInput.setStyleSheet("""
                 background-color: white;
                 border: 2px solid #B8B8B8;
                 border-radius: 5px;""")
-        self.tenCVInput.setGeometry(26, 171, 300, 35)
+        self.tenCVInput.setGeometry(26, 72, 300, 35)
 
         # Thêm
         self.addButton = QPushButton("Thêm", PositionAddPanel)
-        self.addButton.setGeometry(250, 600, 125, 50)
+        self.addButton.setGeometry(117, 150, 125, 50)
         self.addButton.setStyleSheet("QPushButton {border-radius: 5px;background-color: White;min-width: 80px;}"
                                         "QPushButton:hover {background-color: #EBEBEB;}"
                                         "QPushButton:pressed {background-color: #E0E0E0;}")

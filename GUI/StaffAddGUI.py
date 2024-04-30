@@ -271,17 +271,13 @@ class StaffAddGUI(QWidget):
         buffer = QBuffer(image_data)
         buffer.open(QIODevice.OpenModeFlag.WriteOnly)
         image.save(buffer, "jpg")
+        try:
+            self.staff_dao = StaffDAO()
 
-        self.staff_dao = StaffDAO()
-
-        self.staff_dao.add(maNV, tenNV, sDT, ngaySinh, gioiTinh, maPB, maCV, luong, trangthai,image_data)
-
-        self.close()
-        # trả lại giá trị mặc định
-        # self.chucVuComboBox.clear()
-        # self.viTriComboBox.clear()
-        # self.PB_list.clear()
-        # self.CV_list.clear()
+            self.staff_dao.add(maNV, tenNV, sDT, ngaySinh, gioiTinh, maPB, maCV, luong, trangthai,image_data)
+            self.close()
+        except:
+            QMessageBox.information(self, "Thông báo", "Ảnh (Phiên bản ICC không được hỗ trợ)")
         
 
     def closeEvent(self, event):

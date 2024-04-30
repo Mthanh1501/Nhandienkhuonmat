@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import QWidget, QLabel, QPushButton, QLineEdit,QCheckBox,QC
 from PyQt6.QtCore import Qt,QDate
 from PyQt6.QtCore import QByteArray, QBuffer, QIODevice
 
-from PyQt6.QtGui import QPixmap
+from PyQt6.QtGui import QPixmap,QImage,QTransform,QImageReader
 
 from DAO.StaffDAO import  StaffDAO
 from DAO.DBConnect import DBConnect
@@ -204,8 +204,25 @@ class StaffDetailGUI(QWidget):
             scaled_pixmap = self.pixmap.scaled(self.avataLabel.size(), aspectRatioMode=Qt.AspectRatioMode.IgnoreAspectRatio)  # Thay đổi kích thước ảnh nếu cần
             self.avataLabel.setPixmap(scaled_pixmap)  # Đặt hình ảnh vào QLabel
             self.avataLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-
+            #  Check if image is valid
+        # if file_path:
+        #     # Use QImageReader to read image from file
+        #     image_reader = QImageReader(file_path)
+        #     image_reader.setAutoTransform(True)  # Enable automatic transformation based on image metadata
+        #     image = image_reader.read()  # Read the image
+            
+        #     if not image.isNull():
+        #         # Convert QImage to QPixmap
+        #         pixmap = QPixmap.fromImage(image)
+                
+        #         # Scale pixmap while maintaining aspect ratio
+        #         scaled_pixmap = pixmap.scaled(self.avataLabel.size(), aspectRatioMode=Qt.AspectRatioMode.IgnoreAspectRatio)
+                
+        #         # Set pixmap to QLabel
+        #         self.avataLabel.setPixmap(scaled_pixmap)
+        #         self.avataLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        #     else:
+        #         print("Error: Failed to load image.")
 
     def showFaceRecognition(self):
         self.faceRecognitionWidget = FaceRecognitionWidget.FaceRecognitionWidget()  
@@ -296,10 +313,17 @@ class StaffDetailGUI(QWidget):
 
             # self.avataLabel.loadFromData(hinhanh)
             # Create QPixmap from image data
-            self.pixmap.loadFromData(hinhanh)
-            scaled_pixmap = self.pixmap.scaled(self.avataLabel.size(), aspectRatioMode=Qt.AspectRatioMode.IgnoreAspectRatio)  # Thay đổi kích thước ảnh nếu cần
-            self.avataLabel.setPixmap(scaled_pixmap)
-            self.avataLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            print("===============================================")
+            try:
+                self.pixmap.loadFromData(hinhanh)
+                if self.pixmap.isNull():
+                    print("Failed to load image: QPixmap is null")
+                scaled_pixmap = self.pixmap.scaled(self.avataLabel.size(), aspectRatioMode=Qt.AspectRatioMode.IgnoreAspectRatio)
+                self.avataLabel.setPixmap(scaled_pixmap)
+                self.avataLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            except Exception as e:
+                print(f"Error loading image: {e}")
+            print("===============================================")
 
             db_connector.close()
         else:
@@ -322,7 +346,8 @@ class StaffDetailGUI(QWidget):
                 maCV = CV.getMaCV()
         luong = self.luongInput.text()
 
-         # Chuyển đổi QPixmap thành QImage
+
+        # Chuyển đổi QPixmap thành QImage
         image = self.pixmap.toImage()
 
         # Chuyển đổi QImage thành dữ liệu bytes
@@ -330,20 +355,19 @@ class StaffDetailGUI(QWidget):
         buffer = QBuffer(image_data)
         buffer.open(QIODevice.OpenModeFlag.WriteOnly)
         image.save(buffer, "jpg")
+        try:
+            self.staff_dao = StaffDAO()
+            self.staff_dao.update(maNV, tenNV, sDT, ngaySinh, gioiTinh, maPB,maCV,luong,image_data)
+            QMessageBox.information(self, "Thông báo", "Bạn đã sửa thông tin nhân viên thành công!")
 
-        self.staff_dao = StaffDAO()
-        self.staff_dao.update(maNV, tenNV, sDT, ngaySinh, gioiTinh, maPB,maCV,luong,image_data)
-        
-        QMessageBox.information(self, "Thông báo", "Bạn đã sửa thông tin nhân viên thành công!")
-
-        # trả lại giá trị mặc định
-        self.viTriComboBox.clear()
-        self.chucVuComboBox.clear()
-        self.PB_list.clear()
-        self.staff_list.clear()
-
-        self.close()
-
+            # trả lại giá trị mặc định
+            self.viTriComboBox.clear()
+            self.chucVuComboBox.clear()
+            self.PB_list.clear()
+            self.staff_list.clear()
+            self.close()
+        except:
+            QMessageBox.information(self, "Thông báo", "Ảnh (Phiên bản ICC không được hỗ trợ)")
 
     def checkDKKM(self):
         # global signedLabel

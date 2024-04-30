@@ -19,7 +19,7 @@ class AccountDetailGUI(QWidget):
 
     def initUI(self):
         # Create a login panel widget
-        self.setFixedSize(634, 720)
+        self.setFixedSize(350, 550)
 
         AccountDetailPanel = QWidget(self)  # Specify parent widget
         AccountDetailPanel.setStyleSheet("background-color: #B8B8B8;")
@@ -82,7 +82,7 @@ class AccountDetailGUI(QWidget):
         
         # Hủy
         self.cancelButton = QPushButton("Hủy", AccountDetailPanel)
-        self.cancelButton.setGeometry(112, 600, 125, 50)
+        self.cancelButton.setGeometry(34, 450, 125, 50)
         self.cancelButton.setStyleSheet("QPushButton {border-radius: 5px;background-color: White;min-width: 80px;}"
                                         "QPushButton:hover {background-color: #EBEBEB;}"
                                         "QPushButton:pressed {background-color: #E0E0E0;}")
@@ -90,7 +90,7 @@ class AccountDetailGUI(QWidget):
         
         # Cập nhật
         self.updateButton = QPushButton("Lưu", AccountDetailPanel)
-        self.updateButton.setGeometry(389, 600, 125, 50)
+        self.updateButton.setGeometry(200, 450, 125, 50)
         self.updateButton.setStyleSheet("QPushButton {border-radius: 5px;background-color: White;min-width: 80px;}"
                                         "QPushButton:hover {background-color: #EBEBEB;}"
                                         "QPushButton:pressed {background-color: #E0E0E0;}")

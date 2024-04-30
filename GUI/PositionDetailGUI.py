@@ -18,7 +18,7 @@ class PositionDetailGUI(QWidget):
 
     def initUI(self):
         # Create a login panel widget
-        self.setFixedSize(634, 720)
+        self.setFixedSize(350, 350)
 
         PositionDetailPanel = QWidget(self)  # Specify parent widget
         PositionDetailPanel.setStyleSheet("background-color: #B8B8B8;")
@@ -52,7 +52,7 @@ class PositionDetailGUI(QWidget):
 
         # Hủy
         self.cancelButton = QPushButton("Hủy", PositionDetailPanel)
-        self.cancelButton.setGeometry(112, 600, 125, 50)
+        self.cancelButton.setGeometry(34, 250, 125, 50)
         self.cancelButton.setStyleSheet("QPushButton {border-radius: 5px;background-color: White;min-width: 80px;}"
                                         "QPushButton:hover {background-color: #EBEBEB;}"
                                         "QPushButton:pressed {background-color: #E0E0E0;}")
@@ -60,7 +60,7 @@ class PositionDetailGUI(QWidget):
         
         # Cập nhật
         self.updateButton = QPushButton("Lưu", PositionDetailPanel)
-        self.updateButton.setGeometry(389, 600, 125, 50)
+        self.updateButton.setGeometry(190, 250, 125, 50)
         self.updateButton.setStyleSheet("QPushButton {border-radius: 5px;background-color: White;min-width: 80px;}"
                                         "QPushButton:hover {background-color: #EBEBEB;}"
                                         "QPushButton:pressed {background-color: #E0E0E0;}")
