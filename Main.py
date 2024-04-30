@@ -42,5 +42,4 @@ if __name__ == "__main__":
 # ngày mai đi cafe hay đi bơi?
 
 # đây là ví dụ của thành
-# 1
-# 2
+
