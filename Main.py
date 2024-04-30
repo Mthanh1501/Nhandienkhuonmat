@@ -21,10 +21,10 @@ def main():
     window.setMaximumSize(1080,720)
     # Thiết lập tiêu đề, icon cho cửa sổ
     window.setWindowTitle("My App")
-    window.setWindowIcon(QIcon('Icons/LeagueOfLegends.ico'))
+    window.setWindowIcon(QIcon('Icons/icon_avata.jpg'))
 
     # Set background color using stylesheets
-    window.setStyleSheet("background-color: #FFFFFF;")
+    window.setStyleSheet("background-color: #D9D9D9;")
     
 
     initComponents(window)
@@ -38,3 +38,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# đây là ví dụ của thành
+# 1
+# 2
