@@ -1,4 +1,3 @@
-
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtGui import QIcon
 from GUI import MenuGUI
