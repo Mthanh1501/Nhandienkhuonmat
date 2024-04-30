@@ -38,3 +38,11 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def parityCheck(n: int):
+    if n % 2 == 0: return True
+    return False
+
+def zeroCheck(n: int):
+    if n == 0: return True
+    return False
