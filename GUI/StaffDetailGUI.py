@@ -59,13 +59,13 @@ class StaffDetailGUI(QWidget):
         self.avataLabel.setStyleSheet("background-color: white; border: 1px solid black;")
         self.avataLabel.setGeometry(397, 31, 171, 228)
 
-        self.faceButton = QPushButton("Chọn ảnh", StaffAddPanel)
-        self.faceButton.setGeometry(432, 270, 101, 33)
-        self.faceButton.setStyleSheet("QPushButton {border-radius: 5px;background-color: #9F9B9B;min-width: 80px;}"
+        self.avataButton = QPushButton("Chọn ảnh", StaffAddPanel)
+        self.avataButton.setGeometry(432, 270, 101, 33)
+        self.avataButton.setStyleSheet("QPushButton {border-radius: 5px;background-color: #9F9B9B;min-width: 80px;}"
                                         "QPushButton:hover {background-color: #CDCDCD;}"
                                         "QPushButton:pressed {background-color: darkgray;}")
         self.pixmap = QPixmap()
-        self.faceButton.clicked.connect(self.open_image)
+        self.avataButton.clicked.connect(self.open_image)
 
         # Số điện thoại
         sDTLabel = QLabel("Số điện thoại", StaffAddPanel)

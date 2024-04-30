@@ -30,6 +30,7 @@ class initComponents(QWidget):
         main_layout.addWidget(home_widget)
         
         # Event
+        # home_widget.panelCI.mousePressEvent.
         header_widget.login_button.clicked.connect(self.showLoginWidget)
         login_widget.loginButton.clicked.connect(self.checkLogin)
         login_widget.returnButton.clicked.connect(self.showHomeWidget)

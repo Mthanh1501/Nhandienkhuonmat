@@ -18,16 +18,16 @@ class PositionDetailGUI(QWidget):
 
     def initUI(self):
         # Create a login panel widget
-        self.setFixedSize(350, 350)
+        self.setFixedSize(550, 400)
 
         PositionDetailPanel = QWidget(self)  # Specify parent widget
         PositionDetailPanel.setStyleSheet("background-color: #B8B8B8;")
-        PositionDetailPanel.setFixedSize(634, 720)
+        PositionDetailPanel.setFixedSize(550, 500)
 
         # mã chức vụ
         maCVLabel = QLabel("Mã chức vụ", PositionDetailPanel)
         maCVLabel.setStyleSheet("font-size: 16pt;")
-        maCVLabel.setGeometry(26, 31, 291, 30)
+        maCVLabel.setGeometry(120, 60, 291, 30)
 
         self.maCVInput = QLineEdit(PositionDetailPanel)
         self.maCVInput.setStyleSheet("""
@@ -35,24 +35,24 @@ class PositionDetailGUI(QWidget):
                 border: 2px solid #B8B8B8;
                 border-radius: 5px;
                 color: #333;""")
-        self.maCVInput.setGeometry(26, 72, 300, 35)
+        self.maCVInput.setGeometry(120, 101, 300, 35)
         self.maCVInput.setReadOnly(True)
 
         # tên chức vụ
         tenCVLabel = QLabel("Tên chức vụ", PositionDetailPanel)
         tenCVLabel.setStyleSheet("font-size: 16pt;")
-        tenCVLabel.setGeometry(26, 130, 291, 30)
+        tenCVLabel.setGeometry(120, 159, 291, 30)
 
         self.tenCVInput = QLineEdit(PositionDetailPanel)
         self.tenCVInput.setStyleSheet("""
                 background-color: white;
                 border: 2px solid #B8B8B8;
                 border-radius: 5px;""")
-        self.tenCVInput.setGeometry(26, 171, 300, 35)
+        self.tenCVInput.setGeometry(120, 200, 300, 35)
 
         # Hủy
         self.cancelButton = QPushButton("Hủy", PositionDetailPanel)
-        self.cancelButton.setGeometry(34, 250, 125, 50)
+        self.cancelButton.setGeometry(90, 300, 125, 50)
         self.cancelButton.setStyleSheet("QPushButton {border-radius: 5px;background-color: White;min-width: 80px;}"
                                         "QPushButton:hover {background-color: #EBEBEB;}"
                                         "QPushButton:pressed {background-color: #E0E0E0;}")
@@ -60,7 +60,7 @@ class PositionDetailGUI(QWidget):
         
         # Cập nhật
         self.updateButton = QPushButton("Lưu", PositionDetailPanel)
-        self.updateButton.setGeometry(190, 250, 125, 50)
+        self.updateButton.setGeometry(320, 300, 125, 50)
         self.updateButton.setStyleSheet("QPushButton {border-radius: 5px;background-color: White;min-width: 80px;}"
                                         "QPushButton:hover {background-color: #EBEBEB;}"
                                         "QPushButton:pressed {background-color: #E0E0E0;}")

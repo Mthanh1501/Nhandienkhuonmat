@@ -34,3 +34,5 @@ class HomeGUI(QWidget):
         label_CI.setFixedSize(200, 100)
         label_CI.setAlignment(Qt.AlignmentFlag.AlignCenter)
         grid_layout.addWidget(self.panelCI)
+
+        
