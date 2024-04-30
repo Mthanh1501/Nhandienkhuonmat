@@ -39,6 +39,8 @@ def main():
 if __name__ == "__main__":
     main()
 
+# ngày mai đi cafe hay đi bơi?
+
 # đây là ví dụ của thành
 # 1
 # 2
