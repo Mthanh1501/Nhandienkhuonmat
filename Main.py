@@ -15,7 +15,6 @@ def main():
 
     # Tạo cửa sổ chính
     window = QMainWindow()
-error exception
     
     # Đặt kích thước
     window.resize(1080, 720)
