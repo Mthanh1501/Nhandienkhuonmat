@@ -17,7 +17,7 @@ class DepartmentAddGUI(QWidget):
 
     def initUI(self):
         # Create a login panel widget
-        self.setFixedSize(634, 720)
+        self.setFixedSize(350, 321)
 
         DepartmentAddPanel = QWidget(self)  # Specify parent widget
         DepartmentAddPanel.setStyleSheet("background-color: #B8B8B8;")
@@ -41,30 +41,30 @@ class DepartmentAddGUI(QWidget):
         # tên phòng ban
         tenPBLabel = QLabel("Tên phòng ban", DepartmentAddPanel)
         tenPBLabel.setStyleSheet("font-size: 16pt;")
-        tenPBLabel.setGeometry(26, 130, 291, 30)
+        tenPBLabel.setGeometry(26, 31, 291, 30)
 
         self.tenPBInput = QLineEdit(DepartmentAddPanel)
         self.tenPBInput.setStyleSheet("""
                 background-color: white;
                 border: 2px solid #B8B8B8;
                 border-radius: 5px;""")
-        self.tenPBInput.setGeometry(26, 171, 300, 35)
+        self.tenPBInput.setGeometry(26, 72, 300, 35)
 
         # Địa điểm phòng ban
         ddLabel = QLabel("Địa điểm phòng ban", DepartmentAddPanel)
         ddLabel.setStyleSheet("font-size: 16pt;")
-        ddLabel.setGeometry(26, 229, 291, 30)
+        ddLabel.setGeometry(26, 130, 291, 30)
 
         self.ddInput = QLineEdit(DepartmentAddPanel)
         self.ddInput.setStyleSheet("""
                 background-color: white;
                 border: 2px solid #B8B8B8;
                 border-radius: 5px;""")
-        self.ddInput.setGeometry(26, 270, 300, 35)
+        self.ddInput.setGeometry(26, 171, 300, 35)
 
         # Thêm
         self.addButton = QPushButton("Thêm", DepartmentAddPanel)
-        self.addButton.setGeometry(250, 600, 125, 50)
+        self.addButton.setGeometry(117, 250, 125, 50)
         self.addButton.setStyleSheet("QPushButton {border-radius: 5px;background-color: White;min-width: 80px;}"
                                         "QPushButton:hover {background-color: #EBEBEB;}"
                                         "QPushButton:pressed {background-color: #E0E0E0;}")

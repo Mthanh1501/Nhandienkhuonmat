@@ -1,5 +1,7 @@
 from PyQt6.QtWidgets import QWidget, QLabel, QPushButton, QLineEdit,QCheckBox,QComboBox,QCalendarWidget,QDateEdit
 from PyQt6.QtCore import Qt,QDate,QTime
+from PyQt6.QtGui import QPixmap
+
 from datetime import datetime
 
 from DTO.Staff import Staff
@@ -16,7 +18,7 @@ class SalaryDetailGUI(QWidget):
 
     def initUI(self):
         # Create a login panel widget
-        self.setFixedSize(634, 720)
+        self.setFixedSize(634, 690)
 
         SalaryDetailPanel = QWidget(self)  # Specify parent widget
         SalaryDetailPanel.setStyleSheet("background-color: #B8B8B8;")
@@ -49,6 +51,13 @@ class SalaryDetailGUI(QWidget):
                 color: #333;""")
         self.tenNVInput.setGeometry(26, 171, 300, 35)
         self.tenNVInput.setReadOnly(True)
+        
+        # avata
+        self.avataLabel = QLabel(SalaryDetailPanel)
+        self.avataLabel.setStyleSheet("background-color: white; border: 1px solid black;")
+        self.avataLabel.setGeometry(397, 72, 171, 228)
+
+        self.pixmap = QPixmap()
 
         # tên chức vụ
         tenCVLabel = QLabel("Chức vụ", SalaryDetailPanel)
@@ -136,7 +145,7 @@ class SalaryDetailGUI(QWidget):
         # Kiểm tra nếu kết nối thành công
         if mycursor is not None:
             # Thực hiện truy vấn
-            sql = "SELECT staff.maNV, staff.tenNV, position.tenCV, chamcong.vaoCa, chamcong.raCa, staff.Luong \
+            sql = "SELECT staff.maNV, staff.tenNV, position.tenCV, chamcong.vaoCa, chamcong.raCa, staff.Luong, staff.hinhanh\
                    FROM staff inner join position on staff.maCV = position.maCV inner join chamcong on staff.maNV = chamcong.maNV \
                    WHERE staff.maNV = %s"
             mycursor.execute(sql,(data,))
@@ -159,7 +168,7 @@ class SalaryDetailGUI(QWidget):
                 
                 # self.salary_list.append((maNV, tenNV, tenCV, ngayVao, gioVao, gioRa, tongTien))
 
-                maNV, tenNV, tenCV, vaoCa, raCa, Luong = record
+                maNV, tenNV, tenCV, vaoCa, raCa, Luong, hinhanh = record
                 
                 if vaoCa is not None and raCa is not None:
                     to_str_giovao = str(vaoCa)
@@ -190,7 +199,7 @@ class SalaryDetailGUI(QWidget):
                     tongTien = round((tongGio * Luong), 2)
                     
                     # self.salary_list.append((maNV, tenNV, tenCV, ngayVao, Luong, tongTien))
-                    self.salary_list.append((maNV, tenNV, tenCV, ngayVao, str_giovao, str_giora, tongTien))
+                    self.salary_list.append((maNV, tenNV, tenCV, ngayVao, str_giovao, str_giora, tongTien, hinhanh))
                 else:
                     pass
             # Đóng kết nối sau khi hoàn thành
@@ -205,7 +214,12 @@ class SalaryDetailGUI(QWidget):
                 self.timeInInput.setText(str(data[4]))
                 self.timeOutInput.setText(str(data[5]))
                 self.totalInput.setText(str(data[6]))
-
+                self.pixmap.loadFromData(data[7])
+                if self.pixmap.isNull():
+                    print("Failed to load image: QPixmap is null")
+                scaled_pixmap = self.pixmap.scaled(self.avataLabel.size(), aspectRatioMode=Qt.AspectRatioMode.IgnoreAspectRatio)
+                self.avataLabel.setPixmap(scaled_pixmap)
+                self.avataLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
             db_connector.close()
         else:
             print("Failed to connect to database")

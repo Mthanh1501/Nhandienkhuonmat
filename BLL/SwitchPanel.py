@@ -38,10 +38,6 @@ class SwitchPanel(QWidget):
         layout.addWidget(sideBar)
         layout.addWidget(sideBar, alignment=QtCore.Qt.AlignmentFlag.AlignLeft)
 
-    def showTab(self, tab: QWidget):
-        self.closeAll()
-        tab.setVisible(True)
-
     def chkInTab(self):
         self.closeAll()
         self.chkIn = CheckInGUI.CheckInGUI()

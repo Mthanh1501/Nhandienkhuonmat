@@ -63,8 +63,8 @@ class FaceRecognitionThread(QThread):
                         id = "Unknown"
                         confidence_str = f"{confidence:.0f}%"
                     # # Gửi tín hiệu đến GUI
-                    cv2.putText(img, str(id), (x+5, y-5), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 1, cv2.LINE_AA)
-
+                    # cv2.putText(img, str(id), (x+5, y-5), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 1, cv2.LINE_AA)
+                    # cv2.imshow(img)
                     
                     print(confidence_str + "  +  " + name + " + " + str(id))
                     self.face_detected.emit(name, str(id))

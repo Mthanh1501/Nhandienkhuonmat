@@ -18,7 +18,7 @@ class AccountAddGUI(QWidget):
 
     def initUI(self):
         # Create a login panel widget
-        self.setFixedSize(634, 720)
+        self.setFixedSize(350, 550)
 
         AccountAddPanel = QWidget(self)  # Specify parent widget
         AccountAddPanel.setStyleSheet("background-color: #B8B8B8;")
@@ -83,7 +83,7 @@ class AccountAddGUI(QWidget):
 
         # Thêm
         self.addButton = QPushButton("Thêm", AccountAddPanel)
-        self.addButton.setGeometry(250, 600, 125, 50)
+        self.addButton.setGeometry(117, 450, 125, 50)
         self.addButton.setStyleSheet("QPushButton {border-radius: 5px;background-color: White;min-width: 80px;}"
                                         "QPushButton:hover {background-color: #EBEBEB;}"
                                         "QPushButton:pressed {background-color: #E0E0E0;}")
@@ -110,14 +110,14 @@ class AccountAddGUI(QWidget):
         # Kiểm tra nếu kết nối thành công
         if mycursor is not None:
             # Thực hiện truy vấn
-            sql = "SELECT maNV, tenNV, sdt, ngaySinh, gioiTinh, maPB, maCV, luong from staff where not exists (select 1 from account where staff.maNV = account.maNV)"
+            sql = "SELECT maNV, tenNV, sdt, ngaySinh, gioiTinh, maPB, maCV, luong, hinhanh from staff where not exists (select 1 from account where staff.maNV = account.maNV)"
             mycursor.execute(sql)
             # Lấy kết quả
             results  = mycursor.fetchall()
 
             for record in results:
-                maNV, tenNV, sdt, ngaySinh, gioiTinh, maPB, maCV, luong = record
-                staff = Staff.Staff(maNV, tenNV, sdt, ngaySinh, gioiTinh, maPB, maCV, luong)
+                maNV, tenNV, sdt, ngaySinh, gioiTinh, maPB, maCV, luong,hinhanh = record
+                staff = Staff.Staff(maNV, tenNV, sdt, ngaySinh, gioiTinh, maPB, maCV, luong, hinhanh)
                 self.staff_list.append(staff)
                 print(staff.getTenNV())
             # Đóng kết nối sau khi hoàn thành
