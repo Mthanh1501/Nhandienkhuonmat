@@ -53,7 +53,7 @@ class FaceRecognitionThread(QThread):
                             break
                         index += 1
 
-                    if 40 < confidence < 100:
+                    if 58 < confidence < 100:
                         name = self.names[index]
                         id = self.ids[index]
                         print("-------------------------")

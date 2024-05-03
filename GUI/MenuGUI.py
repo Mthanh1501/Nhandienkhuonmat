@@ -77,10 +77,8 @@ class initComponents(QWidget):
             header_widget.label.setText('Quản Lý Nhân Sự')
             header_widget.login_button.setText('Đăng xuất')
         else:
-            QMessageBox.information(self, "Login", "Sai username hoặc mật khẩu")
-            # self.showTabWidget()
-            # header_widget.label.setText('Quản Lý Nhân Sự')
-            # header_widget.login_button.setText('Đăng xuất')
+            QMessageBox.warning(self, "Login", "Sai username hoặc mật khẩu")
+
             
     # Đóng Widget
     def closePanel(self):
