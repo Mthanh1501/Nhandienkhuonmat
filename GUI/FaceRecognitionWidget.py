@@ -1,6 +1,7 @@
 import cv2
 # from plugin import FileHandle as f
 import numpy as np
+import time
 import os
 from PIL import Image
 from PyQt6.QtWidgets import QWidget, QMessageBox
@@ -54,7 +55,9 @@ class FaceRecognitionWidget(QWidget):
                 cv2.imwrite(face_img_path, gray[y:y+h, x:x+w])
                 cv2.imshow('Images', img)
 
-            pic_limit = 200
+            time.sleep(0.1)
+
+            pic_limit = 20
             k = cv2.waitKey(1) & 0xff
             if k == 27 or count >= pic_limit:
                 print("Exit condition met")
