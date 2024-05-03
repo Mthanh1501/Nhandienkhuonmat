@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QLineEdit
+from PyQt6.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QLineEdit, QMessageBox
 from PyQt6.QtCore import Qt
 import mysql.connector
 from DAO.DBConnect import DBConnect
@@ -55,15 +55,14 @@ class LoginGUI(QWidget):
     def checkLogin(self):
         us = self.userInput.text()
         pw = self.passInput.text()
-
+            
         try:
             # Kết nối đến cơ sở dữ liệu
             db_connector = DBConnect()
             mycursor = db_connector.connect()
-
             if mycursor is not None:
                 # Thực hiện truy vấn kiểm tra đăng nhập
-                query = "SELECT * FROM account WHERE maNV = %s AND matKhau = %s"
+                query = "SELECT * FROM account INNER JOIN staff ON account.maNV = staff.maNV WHERE account.maNV = %s AND account.matKhau = %s AND staff.trangthai = 1 AND account.phanquyen = 'Admin'"
                 print(query)
                 mycursor.execute(query, (us, pw))
                 row = mycursor.fetchone()
