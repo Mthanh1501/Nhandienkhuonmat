@@ -96,6 +96,8 @@ class PositionDetailGUI(QWidget):
 
         self.pos_dao = PositionDAO()
         self.pos_dao.update(maCV, tenCV)
+        self.close()
+
 
     def showCancelButton(self):
         self.cancelButton.show()

@@ -78,4 +78,6 @@ class DepartmentAddGUI(QWidget):
         ddiem = self.ddInput.text()
         self.dpm_dao = DepartmentDAO()
         self.dpm_dao.add(maPB, tenPB, ddiem)
+        self.close()
+
             

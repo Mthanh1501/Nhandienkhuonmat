@@ -110,6 +110,8 @@ class DepartmentDetailGUI(QWidget):
 
         self.dpm_dao = DepartmentDAO()
         self.dpm_dao.update(maPB, tenPB, diaDiem)
+        self.close()
+
 
     def showCancelButton(self):
         self.cancelButton.show()

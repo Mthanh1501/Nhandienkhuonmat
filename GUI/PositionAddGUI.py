@@ -65,4 +65,6 @@ class PositionAddGUI(QWidget):
         tenCV = self.tenCVInput.text()
         self.pos_dao = PositionDAO()
         self.pos_dao.add(maCV, tenCV)
+        self.close()
+
             

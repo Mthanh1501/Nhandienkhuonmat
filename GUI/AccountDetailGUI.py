@@ -132,6 +132,8 @@ class AccountDetailGUI(QWidget):
 
         self.acc_dao = AccountDAO()
         self.acc_dao.update(maNV, matkhau, phanquyen)
+        self.close()
+
 
     def showCancelButton(self):
         self.cancelButton.show()

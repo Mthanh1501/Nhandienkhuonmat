@@ -101,6 +101,8 @@ class AccountAddGUI(QWidget):
         phanquyen = self.phanQuyenComboBox.currentText()
         self.acc_dao = AccountDAO()
         self.acc_dao.add(maNV, matkhau, phanquyen)
+        self.close()
+
     
     def list_NV(self):
         # Kết nối đến cơ sở dữ liệu và nhận đối tượng cursor
